@@ -11,5 +11,5 @@ sudo /usr/local/bin/noip2
 ## Preinstall in proxy server
 - screen
 - java
-- [Echolink Proxy server](http://www.echolink.org/register_data.jsp) in /home/echolink_proxy/
-- [Websocketd](https://github.com/joewalnes/websocketd) in /home/echolink_proxy/
+- [Echolink Proxy server](http://www.echolink.org/register_data.jsp) in `/home/echolink_proxy/`
+- [Websocketd](https://github.com/joewalnes/websocketd) in `/home/echolink_proxy/`
