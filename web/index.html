@@ -263,7 +263,7 @@
                   }else if(received_msg.status === "FREE"){
                   	$("#echolinkStatus .chip").removeClass("red yellow").addClass("green").text("FREE");
                   }else if(received_msg.status === "USED"){
-                  	$("#echolinkStatus .chip").removeClass("green red").addClass("yellow").html('<strong>USED<strong> by <a href="https://www.qrz.com/db/'+received_msg.callsign+'" rel="nofollow">'+received_msg.callsign+'</a> since <time>'+received_msg.timestamp+'<time>');
+                  	$("#echolinkStatus .chip").removeClass("green red").addClass("yellow").html('<strong>USED</strong> by <a href="https://www.qrz.com/db/'+received_msg.callsign+'" rel="nofollow">'+received_msg.callsign+'</a> since <time>'+received_msg.timestamp+'<time>');
                   }else{
                   	$("#echolinkStatus .chip").removeClass("green yellow red").text("UNKNOW");
                   }
