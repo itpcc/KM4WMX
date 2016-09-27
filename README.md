@@ -4,7 +4,7 @@
 all script placed in `/home/echolink_proxy/` (Except noip which descripted in [NO-IP document](http://www.noip.com/support/knowledgebase/installing-the-linux-dynamic-update-client/))
 ```bash
 java -jar /home/echolink_proxy/EchoLinkProxy.jar
-/home/echolink_proxy/websocketd --port=8080 --devconsole python /home/echolink_proxy/read_callsign.py #Websocket
+sudo /home/echolink_proxy/websocketd --port=8080 --devconsole --ssl --sslkey=[SSL Private Key] --sslcert=[SSL certificate key] python /home/echolink_proxy/read_callsign.py #Websocket
 sudo /usr/local/bin/noip2
 ```
 

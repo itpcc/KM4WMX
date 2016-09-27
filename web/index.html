@@ -28,6 +28,9 @@
 			background-color: black;
     		color: white;
 		}
+		#echolinkStatusWrapper, #echolinkStatus{
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -203,6 +206,7 @@
 				<div class="col s6"><strong>IP Address</strong></div><div class="col s6"><code>188.166.240.63</code></div>
 				<div class="col s6"><strong>Port</strong></div><div class="col s6"><code>8100</code></div>
 				<div class="col s6"><strong>Password</strong></div><div class="col s6"><code>PUBLIC</code></div>
+				<div class="col s6" id="echolinkStatusWrapper"><strong>Status</strong></div><div class="col s6" id="echolinkStatus"><code class="chip">NONE</code></div>
 			</div>
 		</div>
 	</div>
@@ -241,6 +245,33 @@
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/init.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if ("WebSocket" in window){               
+               // Let us open a web socket
+               var ws = new WebSocket("wss://km4wmx.ddns.net:8080");
+				
+               ws.onopen = function(){
+                  // Web Socket is connected, send data using send()
+                  $("#echolinkStatus, #echolinkStatusWrapper").show();
+               };
+				
+               ws.onmessage = function (evt){ 
+                  var received_msg = JSON.parse(evt.data);
+                  if(received_msg.error){
+                  	$("#echolinkStatus .chip").removeClass("green yellow").addClass("red").text("ERROR");
+                  }else if(received_msg.status === "FREE"){
+                  	$("#echolinkStatus .chip").removeClass("red yellow").addClass("green").text("FREE");
+                  }else if(received_msg.status === "USED"){
+                  	$("#echolinkStatus .chip").removeClass("green red").addClass("yellow").html('<strong>USED<strong> by <a href="https://www.qrz.com/db/'+received_msg.callsign+'" rel="nofollow">'+received_msg.callsign+'</a> since <time>'+received_msg.timestamp+'<time>');
+                  }else{
+                  	$("#echolinkStatus .chip").removeClass("green yellow red").text("UNKNOW");
+                  }
 
+               };
+            }
+
+		});
+	</script>
 	</body>
 </html>

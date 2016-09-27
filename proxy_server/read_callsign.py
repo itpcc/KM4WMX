@@ -10,7 +10,7 @@ timestampFormat = "{0:0>4}-{1:0>2}-{2:0>2} {3:0>2}:{4:0>2}:{5:0>2} {6}"
 scanRE = re.compile("([0-9]{4})\.([0-9]{2})\.([0-9]{2})\s([0-9]{2}):([0-9]{2}):([0-9]{2})\s([A-Z]{3})\s(.*)")
 while 1:
 	searchStatus = False
-	cmd = subprocess.Popen("tail -n 10 "+os.path.abspath("ELProxy.log"), shell=True, stdout=subprocess.PIPE)
+	cmd = subprocess.Popen("tail -n 10 "+os.path.abspath("/home/echolink_proxy/ELProxy.log"), shell=True, stdout=subprocess.PIPE)
 	for line in reversed(list(cmd.stdout)):
 		try:
 			if not searchStatus:
